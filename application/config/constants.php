@@ -88,5 +88,5 @@ defined('APP')      			OR define('APP', 'PKBM Berdaya Indonesia');
 defined('ADMIN')      			OR define('ADMIN', 'CMS '.APP);
 // defined('DIR')      			OR define('DIR', 'E:'.DIRECTORY_SEPARATOR.'xampp'.DIRECTORY_SEPARATOR.'htdocs'.DIRECTORY_SEPARATOR.'cms'.DIRECTORY_SEPARATOR);
 defined('DIR')      			OR define('DIR', DIRECTORY_SEPARATOR.'opt'.DIRECTORY_SEPARATOR.'lampp'.DIRECTORY_SEPARATOR.'htdocs'.DIRECTORY_SEPARATOR.'cms'.DIRECTORY_SEPARATOR);
-// defined('DIR')      			OR define('DIR', DIRECTORY_SEPARATOR.'public_html'.DIRECTORY_SEPARATOR.'cms'.DIRECTORY_SEPARATOR);
+defined('DIR')      			OR define('DIR', 'https://rogucms.herokuapp.com/uploads/');
 
