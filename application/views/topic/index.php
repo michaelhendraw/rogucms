@@ -30,7 +30,7 @@
                             <th>Nama</th>
                             <th>Mapel</th>
                             <th>Urutan</th>
-                            <th style="width:200px;">Action</th>
+                            <th style="width:210px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +40,7 @@
                             <th>Nama</th>
                             <th>Mapel</th>
                             <th>Urutan</th>
-                            <th style="width:200px;">Action</th>
+                            <th style="width:210px;">Action</th>
                         </tr>
                     </tfoot>
                 </table>

@@ -141,6 +141,9 @@
         <?php if(in_array(strtolower($this->uri->segment(1)),array('classes'))) { ?>
             <script src="<?php echo base_url(); ?>assets/pages/scripts/charts-highcharts.min.js" type="text/javascript"></script>
         <?php } ?>
+        <?php if(in_array(strtolower($this->uri->segment(1)),array('classes'))) { ?>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <?php } ?>
         <!-- END PAGE LEVEL SCRIPTS -->
 
         <!-- BEGIN THEME LAYOUT SCRIPTS -->

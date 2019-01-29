@@ -31,7 +31,7 @@
                             <th>Topik</th>
                             <th>Mapel</th>
                             <th>Urutan</th>
-                            <th style="width:125px;">Action</th>
+                            <th style="width:135px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +42,7 @@
                             <th>Mapel</th>
                             <th>Topik</th>
                             <th>Urutan</th>
-                            <th style="width:125px;">Action</th>
+                            <th style="width:135px;">Action</th>
                         </tr>
                     </tfoot>
                 </table>

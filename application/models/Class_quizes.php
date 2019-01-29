@@ -94,7 +94,7 @@ class Class_Quizes extends CI_Model{
 	}
 
 	public function get_class_quizes($id){
-		$query = $this->db->query("	SELECT id, class_subject_id, quiz_id, open_date, close_date
+		$query = $this->db->query("	SELECT id, class_subject_id, quiz_id, open_date, close_date, (SELECT COUNT(id) FROM quiz_detail WHERE quiz_id=quiz_id) AS question_number
 									FROM public.class_quiz
 									WHERE
 										id=".$this->db->escape($id));
@@ -119,5 +119,25 @@ class Class_Quizes extends CI_Model{
 								open_date='.$this->db->escape($open_date).',
 								close_date='.$this->db->escape($close_date).'
 							WHERE id='.$this->db->escape($id));
+	}
+
+	public function get_class_quizes_result($id){
+		$query = $this->db->query("	SELECT
+										cqa.quiz_detail_id,
+										CAST(cqa.student_answer = (SELECT correct_answer FROM quiz_detail WHERE id=cqa.quiz_detail_id) AS INTEGER) result,
+										COUNT(cqa.quiz_detail_id)
+									FROM class_quiz_answer cqa
+									WHERE class_quiz_detail_id in (
+										SELECT id
+										FROM class_quiz_detail
+										WHERE class_quiz_id=".$this->db->escape($id)."
+									)
+									GROUP BY cqa.quiz_detail_id, result
+									ORDER BY cqa.quiz_detail_id, result");
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}else{
+			return 0;
+		}
 	}
 }

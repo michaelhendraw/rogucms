@@ -684,4 +684,40 @@ class Classes extends CI_Controller {
 			echo 'Maaf, edit latihan UN tidak diizinkan';
 		}
 	}
+
+	public function quiz_result($class_id, $subject_id, $id) {
+		if(in_array($this->session->userdata('user_role'), array('guru'))){
+			$this->load->model('class_quizes');
+			$check_id = $this->class_quizes->check_id($id);
+
+			if($check_id){
+				$content['quizes'] = $this->class_quizes->get_quizes($subject_id);
+				$content['class_id'] = $class_id;
+				$content['subject_id'] = $subject_id;
+				$content['data'] = $this->class_quizes->get_class_quizes($id);
+				$content['result'] = $this->class_quizes->get_class_quizes_result($content['data']['id']);
+				$data = array(
+						'title' => 'Hasil Latihan UN '.APP,
+						'content' => $this->load->view('class/quiz_result', $content, true),
+						'bc_header' => 'Materi Belajar',
+						'bc_detail' => 'Hasil Latihan UN'
+				);
+				$this->load->view('template/main', $data);
+			}else{
+				$msg = array(
+						'title' => '<h4>Tidak ditemukan!</h4>',
+						'text' => 'Maaf, data tidak ditemukan'
+					);
+				$this->session->set_flashdata('error',$msg);
+				redirect('subject/'.$subject_id.'/quiz');
+			}
+		}else{
+			$msg = array(
+					'title' => '<h4>Autentikasi Gagal!</h4>',
+					'text' => "Maaf, Anda tidak memiliki hak akses untuk mengakses halaman ini",
+				);
+			$this->session->set_flashdata('error',$msg);
+			redirect();
+		}
+	}
 }
