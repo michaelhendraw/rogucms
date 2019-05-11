@@ -61,10 +61,10 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Soal Latihan', 'Benar', 'Salah'],
+            ['Soal ke-', 'Benar'],
             <?php
                 foreach($show as $soal => $bs){
-                    echo "[".$soal.",".$bs[1].",".$bs[0]."],";
+                    echo "['Soal ke-".$soal."',".$bs[1]."],";
                 }
             ?>
         ]);

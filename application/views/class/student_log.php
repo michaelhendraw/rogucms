@@ -27,14 +27,17 @@
     }
 
     $show = array();
+    $countAll = array();
     foreach($types as $type => $type_name){
         $start = $progress = strtotime($date.'-01');
         $end = strtotime(date("Y-m-t", $start));
         $val = array();
+        $countAll[$type] = 0;
         while($progress <= $end){
             $today = date('Y-m-d', $progress);
             $val[]=$dates[$type][$today];
             $progress = strtotime("+1 day", $progress);
+            $countAll[$type]+=$dates[$type][$today];
         }
         $show[$type_name] = implode(',',$val);
     }
@@ -86,6 +89,19 @@
                 </form>
                 <div class="portlet-body">
                     <div id="highchart_student_logs" style="height:500px;"></div>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="text-center">
+                                    <?php
+                                        foreach($countAll as $t => $c){
+                                            echo $types[$t] . ' sebanyak ' . $c . ' kali<br/>';
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

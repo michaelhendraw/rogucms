@@ -375,6 +375,35 @@ class Classes extends CI_Controller {
 				$content['student_id'] = $student_id;
 				$content['date'] = $date;
 				$content['logs'] = $this->classess->get_student_log($student_id, $date);
+
+				$i=0;
+				for($d=2; $d<=31; $d++){
+					foreach($this->types as $kt => $vt){
+						if($kt=='material_learn'){
+							$c = rand(0,11);
+						}elseif($kt=='material_quiz'){
+							$i_before = ($i==0 ? 0 : $i-1);
+							if($content['logs'][$i_before]['type']=='material_learn'){
+								$c = rand(0,$content['logs'][$i_before]['count']-1);
+								if($c<0){
+									$c=0;
+								}
+							}
+						}elseif($kt=='material_discussion'){
+							$c = rand(0,2);
+						}elseif($kt=='final_quiz'){
+							$c = rand(0,1);
+						}
+						$content['logs'][$i] = array(
+								'date' => '2019-01-'. ($d<=9 ? '0'.$d : $d),
+								'type' => $kt,
+								'count' => $c,
+						);
+						$i++;
+					}
+				}
+				// pr($content['logs']);
+
 				$data = array(
 						'title' => 'Siswa '.APP,
 						'content' => $this->load->view('class/student_log', $content, true),
@@ -696,6 +725,17 @@ class Classes extends CI_Controller {
 				$content['subject_id'] = $subject_id;
 				$content['data'] = $this->class_quizes->get_class_quizes($id);
 				$content['result'] = $this->class_quizes->get_class_quizes_result($content['data']['id']);
+				
+				$i = 0;
+				for($s=1; $s<=50; $s++){
+					$content['result'][$i] = array(
+						'quiz_detail_id' => $s,
+						'result' => 1,
+						'count' => rand(0,11),
+					);
+					$i++;
+				}
+
 				$data = array(
 						'title' => 'Hasil Latihan UN '.APP,
 						'content' => $this->load->view('class/quiz_result', $content, true),

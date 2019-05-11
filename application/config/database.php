@@ -74,17 +74,17 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'hostname'	=> 'pgsql:host=ec2-54-225-150-216.compute-1.amazonaws.com;dbname=dakvfptk0c0c1s',
-	'username' => 'ibixvzxplfguzm',
-	'password' => '6a5eab8ebaa96974bdadcb163b67587c4809b707ea24dae904ff002e503ec399',
-	'database' => 'dakvfptk0c0c1s',
-	'dbdriver' => 'pdo',
-
-	// 'hostname'	=> 'pgsql:host=localhost;dbname=postgres',
-	// 'username' => 'postgres',
-	// 'password' => 'tokopedia789&*(',
-	// 'database' => 'postgres',
+	// 'hostname'	=> 'pgsql:host=ec2-54-225-150-216.compute-1.amazonaws.com;dbname=dakvfptk0c0c1s',
+	// 'username' => 'ibixvzxplfguzm',
+	// 'password' => '6a5eab8ebaa96974bdadcb163b67587c4809b707ea24dae904ff002e503ec399',
+	// 'database' => 'dakvfptk0c0c1s',
 	// 'dbdriver' => 'pdo',
+
+	'hostname'	=> 'pgsql:host=localhost;dbname=postgres',
+	'username' => 'postgres',
+	'password' => 'tokopedia789&*(',
+	'database' => 'postgres',
+	'dbdriver' => 'pdo',
 
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -90,6 +90,7 @@ class Topics extends CI_Model{
 									WHERE id=".$this->db->escape($id));
 		return $query->num_rows();
 	}
+	
 	public function get_topics(){
 		$query = $this->db->query("	SELECT id, name, subject_id, sequence
 									FROM public.topic");
